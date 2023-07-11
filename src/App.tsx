@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
+import { Home, Login, Register } from "pages";
+import { Navbar } from "components";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface AppState {
+	pathname: string;
 }
+export default class App extends Component<{}, AppState> {
+	state: AppState = {
+		pathname: window.location.pathname,
+	};
 
-export default App;
+	getPage = () => {
+		switch (this.state.pathname) {
+			case "/login":
+				return <Login />;
+			case "/register":
+				return <Register />;
+			default:
+				return <Home />;
+		}
+	};
+
+	handleNavigate = (pathname: string) => {
+		this.setState({ pathname });
+	};
+
+	render() {
+		const { pathname } = this.state;
+		return (
+			<>
+				<Navbar currentPathname={pathname} onNavigate={this.handleNavigate} />
+				<div className="container">{this.getPage()}</div>
+			</>
+		);
+	}
+}

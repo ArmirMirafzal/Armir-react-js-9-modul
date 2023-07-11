@@ -1,5 +1,5 @@
 {
-  "name": "react-js-github-repo-9-modul",
+  "name": "pdp-8",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,12 +7,16 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.38",
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6",
+    "@types/node": "^16.18.36",
+    "@types/react": "^18.2.12",
+    "@types/react-dom": "^18.2.5",
+    "axios": "^1.4.0",
+    "bootstrap": "^5.3.0",
+    "classnames": "^2.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "sass": "^1.63.5",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
