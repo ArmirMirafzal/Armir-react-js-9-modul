@@ -14,10 +14,14 @@ export default class Register extends Component<{}, RegisterState> {
 		name: "",
 	};
 
-	handleSubmit: FormEventHandler = async(e) => {
+	handleSubmit: FormEventHandler = async (e) => {
 		e.preventDefault();
-		const { data: auth } = await RegisterApi();
-		console.log("data = ", this.state);
+		const { data } = await RegisterApi({
+			email: this.state.username,
+			password: this.state.password,
+			name: this.state.name,
+		});
+		console.log("data ==>>>>>>>  ",  data);
 	};
 
 	renderInput = (name: keyof RegisterState, label: string, type = "text") => {

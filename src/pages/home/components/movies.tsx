@@ -1,17 +1,19 @@
 import { IEntity } from "types";
 import MoviesTable from "./movies-table";
-import Pagination from "./pagination";
 
 interface MoviesProps {
 	movies: IEntity.Movie[];
+	moviesLength: IEntity.Movie[];
+	filteredMovies: IEntity.Movie[];
 	search: string;
+	genreID: string;
 	onChangeSearch: (search: string) => void;
 }
 
-const Movies = ({ onChangeSearch, search, movies }: MoviesProps) => (
+const Movies = ({ onChangeSearch, search, movies, moviesLength, genreID, filteredMovies }: MoviesProps) => (
 	<div>
-		{/* <button className="btn btn-primary mb-4">New Movie</button> */}
-		<p>Showing {movies.length} movies in the database.</p>
+		<button className="btn btn-primary mb-4">New Movie</button>
+		<p>Showing {genreID !== "all" ? filteredMovies.length : moviesLength.length} movies in the database.</p>
 		<input
 			value={search}
 			type="text"

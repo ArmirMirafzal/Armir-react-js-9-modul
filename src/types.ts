@@ -12,6 +12,13 @@ export namespace IEntity {
 		dailyRentalRate: number;
 		username: string;
 	}
+
+	export interface User {
+		_id: string;
+		name: string;
+		email: string;
+		isAdmin: boolean;
+	}
 }
 
 export namespace IApi {
@@ -72,5 +79,15 @@ export namespace IApi {
 				data: string;
 			}
 		}
+
+		export namespace GetMe {
+			export interface Request extends Params {}
+			export interface Params {
+				accessToken: string;
+			}
+			export type Response = IEntity.User;
+		}
 	}
+
+
 }

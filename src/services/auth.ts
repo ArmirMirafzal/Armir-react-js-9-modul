@@ -7,4 +7,9 @@ export const RegisterApi = async (params?: IApi.Auth.Register.Request) =>
 export const LoginApi = async (params?: IApi.Auth.Login.Request) =>
 	http.post<IApi.Auth.Login.Response>(`/auth`, params);
 
-export const GetMe = async () => {};
+export const GetMeApi = async ({accessToken}: IApi.Auth.GetMe.Request) =>
+	http.get<IApi.Auth.GetMe.Response>("/users/me", {
+		headers: {
+			"x-auth-token": accessToken,
+		},
+	});
