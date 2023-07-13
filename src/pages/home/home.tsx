@@ -16,7 +16,12 @@ interface HomeState {
 	currentPage: number;
 }
 
-export default class Home extends Component<{}, HomeState> {
+interface HomeProps {
+	user: IEntity.User;
+	onNavigate: (pathname: string) => void;
+}
+
+export default class Home extends Component<HomeProps, HomeState> {
 	state: HomeState = {
 		movies: [],
 		genres: [],
@@ -52,10 +57,8 @@ export default class Home extends Component<{}, HomeState> {
 		});
 	}
 
-	render() {
-		if (this.state.isLoading) return <Loader />;
-
-		const { movies, genres, genreID, search, currentPage, pageSize } = this.state;
+	filteredItems = () => {
+		const { movies, genreID, search, currentPage, pageSize } = this.state;
 
 		const filteredMovies =
 			genreID === "all" ? movies : movies.filter((movie) => movie.genre._id === genreID);
@@ -65,6 +68,16 @@ export default class Home extends Component<{}, HomeState> {
 		);
 
 		const paginatedMovies = paginate(searchedMovies, currentPage, pageSize);
+		return { paginatedMovies, searchedMovies };
+	};
+
+	render() {
+		if (this.state.isLoading) return <Loader />;
+
+		const { genres, genreID, search, currentPage, pageSize } = this.state;
+		const { user, onNavigate } = this.props;
+
+		const { paginatedMovies, searchedMovies } = this.filteredItems();
 
 		return (
 			<div className="row">
@@ -72,6 +85,11 @@ export default class Home extends Component<{}, HomeState> {
 					<Genres genreID={genreID} genres={genres} onSelectGenre={this.handleSelectGenre} />
 				</div>
 				<div className="col">
+					{user && (
+						<button className="btn btn-primary mb-4" onClick={() => onNavigate("/new-movie")}>
+							New Movie
+						</button>
+					)}
 					<Movies
 						search={search}
 						movies={paginatedMovies}

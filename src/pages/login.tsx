@@ -36,7 +36,7 @@ export default class Login extends Component<LoginProps, LoginState> {
 			this.props.onLogin(user);
 		} catch (err: any) {
 			console.log(JSON.parse(JSON.stringify(err)));
-			toast.error(err.message);
+			toast.error(err?.response?.data);
 		}
 	};
 

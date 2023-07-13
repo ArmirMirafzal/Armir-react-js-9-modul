@@ -8,7 +8,11 @@ interface RegisterState {
 	name: string;
 }
 
-export default class Register extends Component<{}, RegisterState> {
+interface RegisterProps {
+	onNavigate: (pathname: string) => void;
+}
+
+export default class Register extends Component<RegisterProps, RegisterState> {
 	state: RegisterState = {
 		username: "",
 		password: "",
@@ -18,15 +22,16 @@ export default class Register extends Component<{}, RegisterState> {
 	handleSubmit: FormEventHandler = async (e) => {
 		e.preventDefault();
 		try {
-			const { data } = await Auth.Register({
+			await Auth.Register({
 				name: this.state.name,
 				email: this.state.username,
 				password: this.state.password,
 			});
 
-			console.log("data = ", data);
+			toast.success("Successfully registered");
+			this.props.onNavigate("/login");
 		} catch (err: any) {
-			toast.error(err.message);
+			toast.error(err?.response?.data);
 		}
 	};
 
