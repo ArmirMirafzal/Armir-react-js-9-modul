@@ -75,9 +75,6 @@ export default class Home extends Component<{}, HomeState> {
 					<Movies
 						search={search}
 						movies={paginatedMovies}
-						filteredMovies={filteredMovies}
-						moviesLength={movies}
-						genreID={genreID}
 						onChangeSearch={this.handleChangeSearch}
 					/>
 					<Pagination

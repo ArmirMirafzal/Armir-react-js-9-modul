@@ -13,12 +13,12 @@ export namespace IEntity {
 		username: string;
 	}
 
-	export interface User {
+	export type User = {
 		_id: string;
 		name: string;
 		email: string;
 		isAdmin: boolean;
-	}
+	} | null;
 }
 
 export namespace IApi {
@@ -55,6 +55,17 @@ export namespace IApi {
 	}
 
 	export namespace Auth {
+		export namespace Login {
+			export interface Request extends Params {}
+			export interface Params {
+				email: string;
+				password: string;
+			}
+			export interface Response {
+				data: string;
+			}
+		}
+
 		export namespace Register {
 			export interface Request extends Params {}
 			export interface Params {
@@ -69,17 +80,6 @@ export namespace IApi {
 			}
 		}
 
-		export namespace Login {
-			export interface Request extends Params {}
-			export interface Params {
-				email: string;
-				password: string;
-			}
-			export interface Response {
-				data: string;
-			}
-		}
-
 		export namespace GetMe {
 			export interface Request extends Params {}
 			export interface Params {
@@ -88,6 +88,4 @@ export namespace IApi {
 			export type Response = IEntity.User;
 		}
 	}
-
-
 }

@@ -1,5 +1,4 @@
 import axios from "axios";
+import { config } from "config";
 
-const baseURL = "https://pdp-movies-78.onrender.com/api";
-
-export const http = axios.create({ baseURL });
+export const http = axios.create({ baseURL: config.baseURL });
