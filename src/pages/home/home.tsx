@@ -93,6 +93,9 @@ export default class Home extends Component<HomeProps, HomeState> {
 					<Movies
 						search={search}
 						movies={paginatedMovies}
+						filteredMovies={filteredMovies}
+						moviesLength={movies}
+						genreID={genreID}
 						onChangeSearch={this.handleChangeSearch}
 					/>
 					<Pagination
@@ -106,3 +109,4 @@ export default class Home extends Component<HomeProps, HomeState> {
 		);
 	}
 }
+
