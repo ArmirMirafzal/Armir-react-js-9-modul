@@ -1,4 +1,4 @@
 export const config = {
-	baseURL: "http://10.10.2.156:4000/api",
+	baseURL: "https://pdp-movies-78.onrender.com/api",
 	tokenKEY: "x-auth-token",
 };
