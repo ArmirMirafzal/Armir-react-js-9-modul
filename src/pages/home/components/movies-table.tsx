@@ -21,8 +21,8 @@ const MoviesTable = ({ movies, onNavigate }: MoviesTableProps) => (
 		<tbody>
 			{movies.map((movie) => (
 				<tr key={movie._id}>
-					<td onClick={() => onNavigate(`/edit-movie?id=${movie._id}`)}>
-						<a className="text-decoration-none" href="">
+					<td>
+						<a className="text-decoration-none" href="" onClick={() => onNavigate(`/edit-movie?id=${movie._id}`)}>
 							{movie.title}
 						</a>
 					</td>

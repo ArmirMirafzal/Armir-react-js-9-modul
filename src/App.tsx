@@ -6,7 +6,7 @@ import { config } from "config";
 import { Auth } from "services";
 import { toast } from "react-hot-toast";
 import { delay } from "utils";
-import EditMovie from './pages/edit-movie';
+import EditMovie from "./pages/edit-movie";
 
 interface AppState {
 	pathname: string;
@@ -72,6 +72,9 @@ export default class App extends Component<{}, AppState> {
 				return <Home onNavigate={this.handleNavigate} user={user} />;
 
 			default:
+				if (pathname.includes("id=")) {
+					return <EditMovie onNavigate={this.handleNavigate} movieId={this.state.movieId} />;
+				}
 				this.handleNavigate("/");
 				return null;
 		}
