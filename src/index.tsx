@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
 import { Toaster } from "react-hot-toast";
-import App from "./app";
+import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "assets/style.scss";
 

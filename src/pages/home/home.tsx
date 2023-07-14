@@ -68,7 +68,7 @@ export default class Home extends Component<HomeProps, HomeState> {
 		);
 
 		const paginatedMovies = paginate(searchedMovies, currentPage, pageSize);
-		return { paginatedMovies, searchedMovies };
+		return { paginatedMovies, searchedMovies, filteredMovies };
 	};
 
 	render() {
@@ -77,7 +77,7 @@ export default class Home extends Component<HomeProps, HomeState> {
 		const { genres, genreID, search, currentPage, pageSize } = this.state;
 		const { user, onNavigate } = this.props;
 
-		const { paginatedMovies, searchedMovies } = this.filteredItems();
+		const { paginatedMovies, searchedMovies, filteredMovies } = this.filteredItems();
 
 		return (
 			<div className="row">
@@ -94,7 +94,7 @@ export default class Home extends Component<HomeProps, HomeState> {
 						search={search}
 						movies={paginatedMovies}
 						filteredMovies={filteredMovies}
-						moviesLength={movies}
+						moviesLength={this.state.movies}
 						genreID={genreID}
 						onChangeSearch={this.handleChangeSearch}
 					/>

@@ -3,13 +3,16 @@ import MoviesTable from "./movies-table";
 
 interface MoviesProps {
 	movies: IEntity.Movie[];
+	moviesLength: IEntity.Movie[];
+	filteredMovies: IEntity.Movie[];
 	search: string;
+	genreID: string;
 	onChangeSearch: (search: string) => void;
 }
 
-const Movies = ({ onChangeSearch, search, movies }: MoviesProps) => (
+const Movies = ({ onChangeSearch, search, movies, moviesLength, genreID, filteredMovies }: MoviesProps) => (
 	<>
-		<p>Showing {movies.length} movies in the database.</p>
+		<p>Showing {genreID !== "all" ? filteredMovies.length : moviesLength.length} movies in the database.</p>
 		<input
 			value={search}
 			type="text"
