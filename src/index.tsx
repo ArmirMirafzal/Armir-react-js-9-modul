@@ -11,4 +11,6 @@ root.render(
   </React.StrictMode>
 );
 
+
+
 /* ❗❗❗❗❗❗❗❗❗❗❗❗ loyihada bag bor to'g'irlash kerak  */
