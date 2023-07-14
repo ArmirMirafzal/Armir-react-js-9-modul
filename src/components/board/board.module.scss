@@ -1,0 +1,35 @@
+.board {
+	display: grid;
+ grid-template-columns: repeat(3,1fr);
+ grid-template-rows: repeat(3,1fr);
+ width: 200px;
+ height: 200px;
+
+	.cell {
+		background: #fff;
+		border: 1px solid #999;
+		float: left;
+		font-size: 34px;
+		font-weight: 700;
+		height: 84px;
+		line-height: 34px;
+		margin-right: -1px;
+		margin-top: -1px;
+		padding: 0;
+		text-align: center;
+		width: 94px;
+  user-select: none;
+	}
+
+ .reset{
+  width: 90px;
+  height: 35px;
+  display: grid;
+  place-content: center;
+  margin-top: 20px;
+  font-size: 21px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+ }
+}

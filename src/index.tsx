@@ -1,13 +1,14 @@
-import ReactDOM from "react-dom/client";
-import { Toaster } from "react-hot-toast";
-import App from "./app";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "assets/style.scss";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
 
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
-root.render(
-	<>
-		<App />
-		<Toaster />
-	</>
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
 );
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+/* ❗❗❗❗❗❗❗❗❗❗❗❗ loyihada bag bor to'g'irlash kerak  */
