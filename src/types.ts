@@ -64,6 +64,19 @@ export namespace IApi {
 			}
 			export type Response = IEntity.Movie;
 		}
+
+		export namespace Edit {
+			export interface Request extends Params {}
+			export interface Params {
+				title: string;
+				genreId: string;
+				numberInStock: number;
+				dailyRentalRate: number;
+				accessToken: string;
+				movieId: string;
+			}
+			export type Response = IEntity.Movie;
+		}
 	}
 
 	export namespace Auth {

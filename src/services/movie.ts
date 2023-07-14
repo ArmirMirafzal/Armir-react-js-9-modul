@@ -12,3 +12,8 @@ export const Create = ({ accessToken, ...body }: IApi.Movie.Create.Request) =>
 	http.post<IApi.Movie.Create.Response>(`/movies`, body, {
 		headers: { [config.tokenKEY]: accessToken },
 	});
+
+export const Edit = ({ movieId, accessToken, ...body }: IApi.Movie.Edit.Request) =>
+	http.put<IApi.Movie.Edit.Response>(`/movies/${movieId}`, body, {
+		headers: { [config.tokenKEY]: accessToken },
+	});

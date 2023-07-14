@@ -20,7 +20,11 @@ const MoviesTable = ({ movies }: MoviesTableProps) => (
 		<tbody>
 			{movies.map((movie) => (
 				<tr key={movie._id}>
-					<td>{movie.title}</td>
+					<td onClick={() => onNavigate(`/edit-movie?id=${movie._id}`)}>
+						<a className="text-decoration-none" href="">
+							{movie.title}
+						</a>
+					</td>
 					<td>{movie.genre.name}</td>
 					<td>{movie.username}</td>
 					<td>{movie.numberInStock}</td>
