@@ -1,29 +1,27 @@
-import { AppState } from "../../App";
-
+import { Player, TBoard } from "type";
 import cls from "./histories.module.scss";
+import cx from "classnames";
 
-interface HistoriesProps
-	extends Pick<AppState, "histories" | "nextPlayer" | "currentIdx" | "winner"> {
-	onHistory: (idx: number) => void;
+export interface HistoriesProps {
+  histories: TBoard[];
+  nextPlayer: Player;
+  currentIdx: number;
+  onHistory: (idx: number) => void;
 }
 
-export default function Histories({
-	nextPlayer,
-	histories,
-	currentIdx,
-	winner,
-	onHistory,
-}: HistoriesProps) {
-	return (
-		<div className="ms-2">
-			<h2>{winner ? `Winner ${winner}` : `Next player: ${nextPlayer}`}</h2>
-			<div className={cls.histories} style={{ gap: 2 }}>
-				{histories.map((h, idx) => (
-					<button key={idx} onClick={() => onHistory(idx)} disabled={currentIdx === idx}>
-						Go to {idx ? `move #${idx}` : "game start"}
-					</button>
-				))}
-			</div>
-		</div>
-	);
+export default function Histories({ nextPlayer, histories, currentIdx, onHistory }: HistoriesProps) {
+  return (
+    <div className={cls.histories}>
+      <h2 className={cls.title}>{`Next Player: ${nextPlayer}`}</h2>
+      <ol className={cls.historiesList}>
+        {histories.map((history, idx) => (
+          <li key={idx} className={cls.history}>
+            <button onClick={() => onHistory(idx)} className={cx(cls.historyBtn, currentIdx === idx ? cls.active : "")}>
+              Go to {!idx ? `game start` : `move #${idx}`} {currentIdx === idx ? "(current)" : ""}
+            </button>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
 }
