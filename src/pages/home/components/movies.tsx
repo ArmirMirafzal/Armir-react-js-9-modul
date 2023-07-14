@@ -8,9 +8,10 @@ interface MoviesProps {
 	search: string;
 	genreID: string;
 	onChangeSearch: (search: string) => void;
+	onNavigate: (pathname: string) => void;
 }
 
-const Movies = ({ onChangeSearch, search, movies, moviesLength, genreID, filteredMovies }: MoviesProps) => (
+const Movies = ({ onChangeSearch, search, movies, moviesLength, genreID, filteredMovies,onNavigate }: MoviesProps) => (
 	<>
 		<p>Showing {genreID !== "all" ? filteredMovies.length : moviesLength.length} movies in the database.</p>
 		<input
@@ -20,7 +21,7 @@ const Movies = ({ onChangeSearch, search, movies, moviesLength, genreID, filtere
 			className="form-control my-3"
 			onChange={(e) => onChangeSearch(e.target.value)}
 		/>
-		<MoviesTable movies={movies} />
+		<MoviesTable movies={movies} onNavigate={onNavigate} />
 	</>
 );
 

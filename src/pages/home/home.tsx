@@ -97,7 +97,7 @@ export default class Home extends Component<HomeProps, HomeState> {
 						moviesLength={this.state.movies}
 						genreID={genreID}
 						onChangeSearch={this.handleChangeSearch}
-						// onNavigate={}
+						onNavigate={this.props.onNavigate}
 					/>
 					<Pagination
 						amount={searchedMovies.length}

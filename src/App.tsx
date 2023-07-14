@@ -6,17 +6,20 @@ import { config } from "config";
 import { Auth } from "services";
 import { toast } from "react-hot-toast";
 import { delay } from "utils";
+import EditMovie from './pages/edit-movie';
 
 interface AppState {
 	pathname: string;
 	user: IEntity.User;
 	isLoading: boolean;
+	movieId: string;
 }
 export default class App extends Component<{}, AppState> {
 	state: AppState = {
 		pathname: window.location.pathname,
 		user: null,
 		isLoading: true,
+		movieId: window.location.search.split("=")[1] ? window.location.search.split("=")[1] : "",
 	};
 
 	handleLogin = (user: IEntity.User) => {
@@ -57,6 +60,13 @@ export default class App extends Component<{}, AppState> {
 					return null;
 				}
 				return <NewMovie onNavigate={this.handleNavigate} />;
+
+			case `/edit-movie`:
+				if (!user) {
+					this.handleNavigate("/");
+					return null;
+				}
+				return <EditMovie onNavigate={this.handleNavigate} movieId={this.state.movieId} />;
 
 			case "/":
 				return <Home onNavigate={this.handleNavigate} user={user} />;

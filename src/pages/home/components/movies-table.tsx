@@ -2,9 +2,10 @@ import { IEntity } from "types";
 
 interface MoviesTableProps {
 	movies: IEntity.Movie[];
+	onNavigate: (pathname: string) => void;
 }
 
-const MoviesTable = ({ movies }: MoviesTableProps) => (
+const MoviesTable = ({ movies, onNavigate }: MoviesTableProps) => (
 	<table className="table">
 		<thead>
 			<tr>
