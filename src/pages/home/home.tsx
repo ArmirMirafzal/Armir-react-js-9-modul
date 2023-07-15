@@ -86,9 +86,14 @@ export default class Home extends Component<HomeProps, HomeState> {
 				</div>
 				<div className="col">
 					{user && (
-						<button className="btn btn-primary mb-4" onClick={() => onNavigate("/new-movie")}>
-							New Movie
-						</button>
+						<>
+							<button className="btn btn-primary mb-4" onClick={() => onNavigate("/new-movie")}>
+								New Movie
+							</button>
+							<button className="btn btn-primary mb-4 mx-4" onClick={() => onNavigate("/new-genre")}>
+								New Genre
+							</button>
+						</>
 					)}
 					<Movies
 						search={search}
@@ -110,4 +115,3 @@ export default class Home extends Component<HomeProps, HomeState> {
 		);
 	}
 }
-

@@ -36,6 +36,15 @@ export namespace IApi {
 			}
 			export type Response = IEntity.Genre;
 		}
+
+		export namespace Create {
+			export interface Request extends Params {}
+			export interface Params {
+				name: string;
+				accessToken: string;
+			}
+			export type Response = IEntity.Genre;
+		}
 	}
 
 	export namespace Movie {

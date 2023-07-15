@@ -1,12 +1,11 @@
 import { Component } from "react";
-import { Home, Login, NewMovie, Register } from "pages";
+import { Home, Login, NewMovie, Register, EditMovie, NewGenre } from "pages";
 import { Loader, Navbar } from "components";
 import { IEntity } from "types";
 import { config } from "config";
 import { Auth } from "services";
 import { toast } from "react-hot-toast";
 import { delay } from "utils";
-import EditMovie from "./pages/edit-movie";
 
 interface AppState {
 	pathname: string;
@@ -60,6 +59,13 @@ export default class App extends Component<{}, AppState> {
 					return null;
 				}
 				return <NewMovie onNavigate={this.handleNavigate} />;
+
+			case "/new-genre":
+				if (!user) {
+					this.handleNavigate("/");
+					return null;
+				}
+				return <NewGenre onNavigate={this.handleNavigate} />;
 
 			case `/edit-movie`:
 				if (!user) {
